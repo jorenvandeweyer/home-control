@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+    home-control:
+        build: .
+        env_file:
+            - .env
+        volumes:
+            - ./src/:/usr/src/app/src/
+            #- /sys/class/gpio/:/sys/class/gpio/
+        restart: always
+
+
+
