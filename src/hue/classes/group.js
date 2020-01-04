@@ -6,6 +6,8 @@ module.exports = class Group extends EventListener {
         super();
         this._id = id;
         this._groupObject = groupObject;
+
+        this._bri_inc = -1;
     }
 
     get isOn() {
@@ -52,5 +54,24 @@ module.exports = class Group extends EventListener {
         return http.groups.setState(this.id, {
             on: false,
         })
+    }
+
+    async start() {
+        this._bri_inc *= -1;
+
+        return http.groups.setState(this.id, {
+            bri_inc: this._bri_inc * 254,
+            transitiontime: 50,
+        });
+    }
+
+    async stop() {
+        return http.groups.setState(this.id, {
+            bri_inc: 0,
+        });
+    }
+
+    async raw(body) {
+        return http.groups.setState(this.id, body);
     }
 }

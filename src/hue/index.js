@@ -10,7 +10,7 @@ module.exports = class extends EventListener{
 
         this._ipaddress = null;
 
-        this.groups = new Groups(this);
+        this.groups = new Groups();
 
         this._attachBridge();
     }
