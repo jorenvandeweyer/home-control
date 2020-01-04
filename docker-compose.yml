@@ -6,7 +6,6 @@ services:
             - .env
         volumes:
             - ./src/:/usr/src/app/src/
-            #- /sys/class/gpio/:/sys/class/gpio/
         restart: always
 
 
