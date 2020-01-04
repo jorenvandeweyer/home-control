@@ -7,7 +7,7 @@ module.exports = class Group extends EventListener {
         this._id = id;
         this._groupObject = groupObject;
 
-        this._bri_inc = -1;
+        this._bri_inc = 1;
     }
 
     get isOn() {
