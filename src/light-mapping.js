@@ -8,31 +8,31 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": 6
+            "index": false
         }
     }, 
     {
         "from": {
-            "pin": 2,
+            "pin": 9,
             "mode": "in",
             "edge": "rising",
             "button": null
         },
         "to": {
             "type": "group",
-            "index": 6
+            "index": false
         }
     }, 
     {
         "from": {
-            "pin": 3,
+            "pin": 10,
             "mode": "in",
             "edge": "rising",
             "button": null
         },
         "to": {
             "type": "group",
-            "index": 6
+            "index": false
         }
     }, 
     {
@@ -44,7 +44,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": 6
+            "index": false
         }
     },
     {
@@ -68,7 +68,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": 6
+            "index": false
         }
     },
     {
@@ -80,7 +80,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": 6
+            "index": false
         }
     },
     {
@@ -92,7 +92,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": 6
+            "index": false
         }
     }
 ]
