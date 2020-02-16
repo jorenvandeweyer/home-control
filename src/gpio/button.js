@@ -8,7 +8,7 @@ module.exports = class Button extends EventListener {
 
         this._timer = null;
 
-        this._button = new Gpio(this._options.pin, 'in', 'both');
+        this._button = new Gpio(this._options.pin, 'in', 'both', {debounceTimeout: 10});
         this._button.watch(this._watch.bind(this));
     }
 
