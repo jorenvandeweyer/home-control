@@ -20,7 +20,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": false
+            "index": 1
         }
     }, 
     {
@@ -32,7 +32,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": false
+            "index": 5
         }
     }, 
     {
@@ -68,7 +68,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": false
+            "index": 4
         }
     },
     {
