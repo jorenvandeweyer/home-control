@@ -10,10 +10,13 @@ module.exports = class Button extends EventListener {
 
         this._button = new Gpio(this._options.pin, 'in', 'both', {debounceTimeout: 25});
         this._button.watch(this._watch.bind(this));
+
+        this._value = 0;
     }
 
     _watch(err, value) {
         if (err) return false;
+        if (value === this._value) return false;
 
         if (value) {
             //rising
@@ -33,6 +36,8 @@ module.exports = class Button extends EventListener {
 
             this.emit('stop');
         }
+
+        this._value = value;
     }
 
     _startTimer() {
