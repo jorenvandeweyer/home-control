@@ -39,5 +39,9 @@ hue.on('ready', () => {
 });
 
 hue.on('error', (msg) => {
+    setTimeout(() => {
+        hue._attachBridge();
+    }, 30);
+    console.log('reattaching bridge in 30 seconds');
     console.log('error:', msg);
 });
