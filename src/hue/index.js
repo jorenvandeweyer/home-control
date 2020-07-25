@@ -16,26 +16,30 @@ module.exports = class extends EventListener{
     }
 
     async _attachBridge() {
-        const bridges = await http.bridge.findAll();
-        this._ipaddress = bridges[0].internalipaddress;
+        try {
+            const bridges = await http.bridge.findAll();
+            this._ipaddress = bridges[0].internalipaddress;
 
-        await http.connections.create(this._ipaddress, this._username);
-        this.fetchAll();
+            await http.connections.create(this._ipaddress, this._username);
+            this.fetchAll();
+        } catch (e) {
+            this.emit('error', e);
+        }
     }
 
     async fetchAll() {
         const APIResult = await http.base();
-    
-        if (!APIResult) 
+
+        if (!APIResult)
             return this.emit('error', 'Not Authenticated');
 
         await this._create(APIResult);
-        
+
         return this.emit('ready');
     }
 
     async _create(object) {
         this.groups._createFromObject(object.groups);
     }
-    
+
 }

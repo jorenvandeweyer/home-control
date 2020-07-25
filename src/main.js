@@ -15,7 +15,7 @@ hue.on('ready', () => {
         button.on('falling', _ => console.log('falling', conf.from.pin));
 
         if (!conf.to.index) return;
-        
+
         const group = await hue.groups.findById(conf.to.index);
 
         button.on('toggle', _ => group.toggle());
@@ -41,7 +41,7 @@ hue.on('ready', () => {
 hue.on('error', (msg) => {
     setTimeout(() => {
         hue._attachBridge();
-    }, 30);
+    }, 30*1000);
     console.log('reattaching bridge in 30 seconds');
     console.log('error:', msg);
 });
