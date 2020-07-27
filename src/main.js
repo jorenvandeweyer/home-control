@@ -1,11 +1,12 @@
 require('dotenv').config();
-const Hue = require('./hue');
+
 const Button = require('./gpio/button');
 const mapping = require('./light-mapping');
+const { App } = require('hue.js');
 
-const hue = new Hue(process.env.HUE_USER);
+const hue = new App(null, process.env.HUE_USER)
 
-hue.on('ready', () => {
+hue.on('ready', (bridge) => {
     console.log('ready');
 
     mapping.forEach(async conf => {
@@ -16,32 +17,18 @@ hue.on('ready', () => {
 
         if (!conf.to.index) return;
 
-        const group = await hue.groups.findById(conf.to.index);
+        const group = await bridge.Group.one(conf.to.index);
 
         button.on('toggle', _ => group.toggle());
         button.on('start', _ => group.start());
         button.on('stop', _ => group.stop());
     });
-
-    // hue.groups.findById(1).then(group => {
-    //     group.raw({
-    //         transitiontime: 20,
-    //         bri_inc: -254
-    //     });
-
-    //     setTimeout(() => {
-    //         group.raw({
-    //             bri_inc: 0
-    //         });
-    //     }, 2000)
-    // })
-    // console.log(hue.groups._groups);
 });
 
 hue.on('error', (msg) => {
     setTimeout(() => {
-        hue._attachBridge();
+        hue.connect();
     }, 30*1000);
-    console.log('reattaching bridge in 30 seconds');
+    console.log('reconnecting bridge in 30 seconds');
     console.log('error:', msg);
 });

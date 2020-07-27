@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
+    "hue.js": "github:jorenvandeweyer/hue.js",
     "nodemon": "^2.0.4",
     "onoff": "^6.0.0"
   },
