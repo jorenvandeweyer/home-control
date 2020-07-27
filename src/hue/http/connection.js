@@ -9,18 +9,18 @@ class Connections {
     get connection() {
         if (!this._connections.length)
             return null;
-        
+
         return this._connections[0];
     }
 
     get conn() {
         return this.connection;
     }
-    
+
     create(baseURL, username) {
         const connection = axios.create({
             baseURL: `https://${baseURL}/api/${username}`,
-            httpsAgent: new https.Agent({  
+            httpsAgent: new https.Agent({
                 rejectUnauthorized: false
             })
         });

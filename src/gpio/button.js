@@ -16,7 +16,7 @@ module.exports = class Button extends EventListener {
 
     _watch(err, value) {
         if (err) return false;
-        
+
         if (value === this._value) return false;
         this._value = value;
 

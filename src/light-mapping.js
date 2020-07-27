@@ -10,7 +10,7 @@ module.exports = [
             "type": "group",
             "index": false
         }
-    }, 
+    },
     {
         "from": {
             "pin": 9,
@@ -22,7 +22,7 @@ module.exports = [
             "type": "group",
             "index": 1
         }
-    }, 
+    },
     {
         "from": {
             "pin": 10,
@@ -34,7 +34,7 @@ module.exports = [
             "type": "group",
             "index": 5
         }
-    }, 
+    },
     {
         "from": {
             "pin": 4,

@@ -8,7 +8,7 @@ module.exports = class Groups extends EventListener {
 
         this._groups = new Map();
 
-        if (groups) 
+        if (groups)
             this._createFromObject(groups);
     }
 
@@ -25,7 +25,7 @@ module.exports = class Groups extends EventListener {
 
     _createFromEntry(entry) {
         const [id, groupObject] = entry;
-        this._groups.set(id, new Group(id, groupObject));        
+        this._groups.set(id, new Group(id, groupObject));
     }
 
     _createFromObject(object) {
