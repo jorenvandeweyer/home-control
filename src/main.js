@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const Button = require('./gpio/button');
 const mapping = require('./light-mapping');
-const { Hue } = require('hue-wrapper');
+const { Hue } = require('hue');
 
 const hue = new Hue(null, process.env.HUE_USER)
 
