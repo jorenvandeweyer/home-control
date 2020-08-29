@@ -31,9 +31,9 @@ module.exports = class Button extends EventListener {
             if (this._delay) {
                 //previous toggle event not yet emitted
 
-                this._fresh = false;
                 this._removeEmit();
                 this.emit('double');
+                this._fresh = false;
             } else {
                 this._startTimer();
             }

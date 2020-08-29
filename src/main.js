@@ -24,7 +24,8 @@ hue.on('ready', (bridge) => {
         button.on('toggle', _ => group.toggle());
         button.on('double', _ => group.setState({
             on: true,
-            bri: 254
+            bri: 254,
+            brightness: 254
         }));
         button.on('start', _ => group.dim());
         button.on('stop', _ => group.freeze());
