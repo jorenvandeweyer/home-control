@@ -20,6 +20,10 @@ hue.on('ready', (bridge) => {
         const group = await bridge.Group.one(conf.to.index);
 
         button.on('toggle', _ => group.toggle());
+        button.on('double', _ => group.setState({
+            on: false,
+            bri: 254
+        }));
         button.on('start', _ => group.dim());
         button.on('stop', _ => group.freeze());
     });

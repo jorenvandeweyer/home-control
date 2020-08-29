@@ -38,7 +38,7 @@ module.exports = class Button extends EventListener {
                 this._removeTimer();
 
                 if (this._delay) {
-                    this._emit('double')
+                    this._emit('double');
                 } else {
                     this._emit('toggle');
                 }
