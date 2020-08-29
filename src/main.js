@@ -16,6 +16,8 @@ hue.on('ready', (bridge) => {
         button.on('falling', _ => console.log(conf.from.pin, Date.now(), 'falling', ));
         button.on('toggle', _ => console.log(conf.from.pin, Date.now(), 'toggle'));
         button.on('double', _ => console.log(conf.from.pin, Date.now(), 'double'));
+        button.on('start', _ => console.log(conf.from.pin, Date.now(), 'start'));
+        button.on('stop', _ => console.log(conf.from.pin, Date.now(), 'stop'));
 
         if (!conf.to.index) return;
 

@@ -33,13 +33,10 @@ module.exports = class Button extends EventListener {
 
                 this._removeEmit();
                 this.emit('double');
-                console.log('was fresh', this._fresh)
                 this._fresh = false;
-                console.log('setting fresh', this._fresh)
-            } else {
-                this._startTimer();
             }
 
+            this._startTimer();
         } else {
             //falling
 
@@ -49,14 +46,12 @@ module.exports = class Button extends EventListener {
                 // short press button
                 this._removeTimer();
 
-                console.log('comparing fresh', this._fresh)
                 if (this._fresh) {
                     // no double event emitted
                     this._emit('toggle');
                 } else {
                     // double event emitted
                     this._fresh = true;
-                    console.log('setting fresh', this._fresh)
                 }
             } else {
                 // held button down and released
