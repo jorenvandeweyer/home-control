@@ -14,7 +14,7 @@ module.exports = class Button extends EventListener {
 
         this._value = 0;
 
-        this._presses = 0;
+        this._fresh = true;
     }
 
     _watch(err, value) {
