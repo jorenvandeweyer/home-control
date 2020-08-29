@@ -12,8 +12,10 @@ hue.on('ready', (bridge) => {
     mapping.forEach(async conf => {
         const button = new Button(conf.from);
 
-        button.on('rising', _ => console.log('rising', conf.from.pin));
-        button.on('falling', _ => console.log('falling', conf.from.pin));
+        button.on('rising', _ => console.log(conf.from.pin, 'rising'));
+        button.on('falling', _ => console.log(conf.from.pin, 'falling'));
+        button.on('toggle', _ => console.log(conf.from.pin, 'toggle'));
+        button.on('double', _ => console.log(conf.from.pin, 'double'));
 
         if (!conf.to.index) return;
 

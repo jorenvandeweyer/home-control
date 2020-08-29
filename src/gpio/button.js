@@ -38,7 +38,8 @@ module.exports = class Button extends EventListener {
                 this._removeTimer();
 
                 if (this._delay) {
-                    this._emit('double');
+                    this._removeEmit()
+                    this.emit('double');
                 } else {
                     this._emit('toggle');
                 }
@@ -63,14 +64,14 @@ module.exports = class Button extends EventListener {
     }
 
     _emit(value) {
-        if (this._delay) {
-            clearTimeout(this._delay);
-            this._delay = null;
-        }
-
         this._delay = setTimeout(() => {
-            this._delay = null;
             this.emit(value);
-        }, 200);
+            this._removeEmit();
+        }, 400);
+    }
+
+    _removeEmit() {
+        clearTimeout(this._delay);
+        this._delay = null;
     }
 }
