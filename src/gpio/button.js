@@ -27,7 +27,17 @@ module.exports = class Button extends EventListener {
             //rising
 
             this.emit('rising');
-            this._startTimer();
+
+            if (this._delay) {
+                //previous toggle event not yet emitted
+
+                this._fresh = false;
+                this._removeEmit();
+                this.emit('double');
+            } else {
+                this._startTimer();
+            }
+
         } else {
             //falling
 
@@ -37,11 +47,12 @@ module.exports = class Button extends EventListener {
                 // short press button
                 this._removeTimer();
 
-                if (this._delay) {
-                    this._removeEmit()
-                    this.emit('double');
-                } else {
+                if (this._fresh) {
+                    // no double event emitted
                     this._emit('toggle');
+                } else {
+                    // double event emitted
+                    this._fresh = true;
                 }
             } else {
                 // held button down and released
@@ -67,7 +78,7 @@ module.exports = class Button extends EventListener {
         this._delay = setTimeout(() => {
             this.emit(value);
             this._removeEmit();
-        }, 400);
+        }, 200);
     }
 
     _removeEmit() {
