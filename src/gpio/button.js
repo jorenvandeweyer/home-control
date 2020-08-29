@@ -7,17 +7,20 @@ module.exports = class Button extends EventListener {
         this._options = options;
 
         this._timer = null;
+        this._delay = null;
 
         this._button = new Gpio(this._options.pin, 'in', 'both', {debounceTimeout: 25});
         this._button.watch(this._watch.bind(this));
 
         this._value = 0;
+
+        this._presses = 0;
     }
 
     _watch(err, value) {
         if (err) return false;
 
-        if (value === this._value) return false;
+        if (value === this._value) return;
         this._value = value;
 
         if (value) {
@@ -31,12 +34,19 @@ module.exports = class Button extends EventListener {
             this.emit('falling');
 
             if (this._timer) {
+                // short press button
                 this._removeTimer();
-                this.emit('toggle');
-                return;
+
+                if (this._delay) {
+                    this._emit('double')
+                } else {
+                    this._emit('toggle');
+                }
+            } else {
+                // held button down and released
+                this.emit('stop');
             }
 
-            this.emit('stop');
         }
     }
 
@@ -50,5 +60,17 @@ module.exports = class Button extends EventListener {
     _removeTimer() {
         clearTimeout(this._timer);
         this._timer = null;
+    }
+
+    _emit(value) {
+        if (this._delay) {
+            clearTimeout(this._delay);
+            this._delay = null;
+        }
+
+        this._delay = setTimeout(() => {
+            this._delay = null;
+            this.emit(value);
+        }, 200);
     }
 }
