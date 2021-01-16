@@ -4,11 +4,11 @@
   "description": "Giving my light switches meaning again - Hue",
   "main": "src/main.js",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
-    "hue": "^0.1.2",
-    "nodemon": "^2.0.4",
-    "onoff": "^6.0.0"
+    "hue": "^0.2.1",
+    "nodemon": "^2.0.7",
+    "onoff": "^6.0.1"
   },
   "devDependencies": {},
   "scripts": {

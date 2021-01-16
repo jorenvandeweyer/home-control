@@ -20,7 +20,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": 1
+            "index": 1 // room woonkamer zetel
         }
     },
     {
@@ -32,7 +32,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": 5
+            "index": 5 // room woonkamer tafel
         }
     },
     {
@@ -56,7 +56,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": 6
+            "index": 6 // room joren
         }
     },
     {
@@ -68,7 +68,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": 4
+            "index": 4 // room mama papa
         }
     },
     {
@@ -80,7 +80,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": false
+            "index": 10 // room inte
         }
     },
     {
