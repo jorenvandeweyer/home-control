@@ -1,6 +1,4 @@
-require('dotenv').config();
-
-const Button = require('./gpio/button');
+const Button = require('../gpio/button');
 const mapping = require('./light-mapping');
 const { Hue } = require('hue');
 
