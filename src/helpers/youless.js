@@ -34,7 +34,10 @@ class Youless {
     const youless = results.filter(addr => addr)
 
     if (youless.length) {
+      console.log('found:', youless)
       this.address = youless[0]
+    } else {
+      console.log('nothing found')
     }
   }
 
