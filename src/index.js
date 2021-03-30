@@ -7,9 +7,13 @@ const lighting = require('./lighting/index')
 const app = express()
 
 app.get('/metrics', async (req, res) => {
-  const result = await metrics.metrics()
+  try {
+    const result = await metrics.metrics()
+    res.send(result)
+  } catch (e) {
+    res.sendStatus(500)
+  }
 
-  res.send(result)
 })
 
 app.listen(3000)
