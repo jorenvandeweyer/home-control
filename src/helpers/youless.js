@@ -3,7 +3,7 @@ const axios = require('axios');
 class Youless {
   constructor () {
     this.address = null
-    this.last = Date.now()
+    this.last = 0
 
     this.init()
 
