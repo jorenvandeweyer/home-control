@@ -44,7 +44,7 @@ class Youless {
     }
 
     try {
-      const res = await axios.get('http://192.168.1.156/a?f=j')
+      const res = await axios.get(this.address)
 
       return res.data
     } catch (e) {
