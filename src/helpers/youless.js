@@ -13,7 +13,7 @@ class Youless {
 
     this.last = Date.now()
 
-    const instance = axios.default.create({
+    const instance = axios.create({
       timeout: 2000,
     })
 
