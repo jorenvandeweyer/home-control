@@ -6,6 +6,8 @@ class Youless {
     this.last = Date.now()
 
     this.init()
+
+    console.log('ok')
   }
 
   async init () {
