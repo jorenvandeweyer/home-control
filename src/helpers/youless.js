@@ -23,8 +23,10 @@ class Youless {
       try {
         const address = `http://192.168.1.${number + 1}/a?f=j`
         await instance.get(address)
+        console.log('huh', number)
         return address
       } catch (e) {
+        console.log('nothing', number)
         return null
       }
     })
