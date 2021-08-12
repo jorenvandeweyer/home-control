@@ -1,5 +1,6 @@
 const axios = require('axios').default
 const https = require('https')
+const client = require('prom-client');
 
 class SunnyBoy {
   constructor () {
