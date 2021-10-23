@@ -1,8 +1,15 @@
-const axios = require('axios').default
-const https = require('https')
-const client = require('prom-client');
+import axios, { AxiosInstance } from 'axios'
+import https from 'https'
+import client, { Gauge } from 'prom-client'
 
 class SunnyBoy {
+  instance: AxiosInstance
+  options: Record<string, string>
+  keys: string[]
+  keysMap: Record<string, string>
+  sid: string
+  metrics: Record<string, Gauge<string>>
+
   constructor () {
     this.sid = null
 
@@ -58,9 +65,9 @@ class SunnyBoy {
   }
 
   async login () {
-    const res = await this.instance.post('/dyn/login.json', {
-      right:"usr",
-      pass:"Vandeweyer1!"
+    const res = await this.instance.post<any>('/dyn/login.json', {
+      right: 'usr',
+      pass: 'Vandeweyer1!'
     })
 
     this.sid = res.data.result.sid
@@ -72,14 +79,14 @@ class SunnyBoy {
         await this.login()
       }
 
-      const res = await this.instance.post(`/dyn/getValues.json?sid=${this.sid}`, {
-        "destDev":[],
-        "keys":["6100_004F4E00","6800_0883D800","6100_002F7A00","6800_0883D900","6400_00432200","6400_00496700","6400_00496800","6100_00295A00","6180_08495E00","6100_00496900","6100_00496A00","6100_00696E00","6100_40263F00","6800_00832A00","6180_08214800","6180_08414900","6400_00462500","6400_00462400","6100_40463700","6100_40463600","6800_08862500","6182_08434C00","6100_4046F200","6800_008AA200","6400_00260100","6100_402F2000","6100_402F1E00","6800_088F2000","6800_088F2100","6800_10852400","6800_00853400","6180_08652600","6800_00852F00","6180_08652400","6180_08653A00","6100_00653100","6100_00653200","6800_08811F00","6400_00462E00"]
+      const res = await this.instance.post<any>(`/dyn/getValues.json?sid=${this.sid}`, {
+        destDev: [],
+        keys: ['6100_004F4E00', '6800_0883D800', '6100_002F7A00', '6800_0883D900', '6400_00432200', '6400_00496700', '6400_00496800', '6100_00295A00', '6180_08495E00', '6100_00496900', '6100_00496A00', '6100_00696E00', '6100_40263F00', '6800_00832A00', '6180_08214800', '6180_08414900', '6400_00462500', '6400_00462400', '6100_40463700', '6100_40463600', '6800_08862500', '6182_08434C00', '6100_4046F200', '6800_008AA200', '6400_00260100', '6100_402F2000', '6100_402F1E00', '6800_088F2000', '6800_088F2100', '6800_10852400', '6800_00853400', '6180_08652600', '6800_00852F00', '6180_08652400', '6180_08653A00', '6100_00653100', '6100_00653200', '6800_08811F00', '6400_00462E00']
       })
 
       const values = res.data.result['0169-B388D55E']
 
-      const result = {}
+      const result: Record<string, number> = {}
 
       for (const value in values) {
         if (this.keys.includes(value)) {
@@ -155,4 +162,4 @@ const sma = new SunnyBoy()
 
 sma.init()
 
-module.exports = sma
+export default sma

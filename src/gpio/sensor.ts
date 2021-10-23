@@ -1,8 +1,8 @@
-const EventListener = require('events');
-const Gpio = require('./index');
+const EventListener = require('events')
+const Gpio = require('./index')
 
-module.exports = class Sensor extends EventListener {
-  constructor(options) {
+export class Sensor extends EventListener {
+  constructor (options) {
     super()
 
     this._options = options
@@ -13,17 +13,17 @@ module.exports = class Sensor extends EventListener {
     this._value = 0
   }
 
-  _watch(err, value) {
+  _watch (err, value) {
     if (err) return false
 
     if (value === this._value) return
-    this._value = value;
+    this._value = value
 
     if (value) {
-      //rising
+      // rising
       this.emit('rising')
     } else {
-      //falling
+      // falling
       this.emit('falling')
     }
   }

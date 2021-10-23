@@ -1,8 +1,10 @@
-const axios = require('axios');
+import axios from 'axios'
 
 class Youless {
+  address?: string
+  last: number
+
   constructor () {
-    this.address = null
     this.last = 0
 
     this.init()
@@ -14,7 +16,7 @@ class Youless {
     this.last = Date.now()
 
     const instance = axios.create({
-      timeout: 2000,
+      timeout: 2000
     })
 
     const possibilities = Array.from(new Array(254).keys())
@@ -40,12 +42,11 @@ class Youless {
 
   async status () {
     if (!this.address) {
-      this.init()
+      await this.init()
     }
 
     try {
-      const res = await axios.get(this.address)
-
+      const res = await axios.get<any>(this.address)
       return res.data
     } catch (e) {
       this.address = null
@@ -56,4 +57,4 @@ class Youless {
 
 const youless = new Youless()
 
-module.exports = youless
+export default youless

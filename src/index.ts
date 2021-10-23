@@ -1,9 +1,9 @@
-require('dotenv').config();
+import express from 'express'
+import metrics from './helpers/metrics'
+import sma from './helpers/sma'
+import './lighting/index'
 
-const express = require('express')
-const metrics = require('./helpers/metrics');
-const sma = require('./helpers/sma');
-const lighting = require('./lighting/index')
+require('dotenv').config()
 
 const app = express()
 

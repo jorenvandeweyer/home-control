@@ -1,12 +1,12 @@
-const client = require('prom-client');
-const youless = require('./youless')
-const sma = require('./sma')
+import client from 'prom-client'
+import youless from './youless'
+import sma from './sma'
 
-const collectDefaultMetrics = client.collectDefaultMetrics;
-const Registry = client.Registry;
+const Registry = client.Registry
 
-const register = new Registry();
+const register = new Registry()
 
+// eslint-disable-next-line no-unused-vars
 const powerGauge = new client.Gauge({
   name: 'home_control_power_usage',
   help: 'home_control_power_usage',
@@ -21,4 +21,4 @@ const powerGauge = new client.Gauge({
 
 sma.registerMetrics(register)
 
-module.exports = register
+export default register
