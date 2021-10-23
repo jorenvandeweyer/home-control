@@ -32,7 +32,7 @@ module.exports = [
         },
         "to": {
             "type": "group",
-            "index": 5 // room woonkamer tafel
+            "index": false // room woonkamer tafel
         }
     },
     {
